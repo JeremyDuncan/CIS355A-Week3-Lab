@@ -1,8 +1,11 @@
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author jeremyduncan
@@ -14,7 +17,7 @@ public class BurgersGUI extends javax.swing.JFrame {
      */
     public BurgersGUI() {
         initComponents();
-        
+
         // set to center of screen
         this.setLocationRelativeTo(null);
     }
@@ -30,18 +33,18 @@ public class BurgersGUI extends javax.swing.JFrame {
 
         btgBurgers = new javax.swing.ButtonGroup();
         rdoDouble = new javax.swing.JRadioButton();
-        rdoSingle1 = new javax.swing.JRadioButton();
+        rdoSingle = new javax.swing.JRadioButton();
         chkBacon = new javax.swing.JCheckBox();
         chkCheese = new javax.swing.JCheckBox();
         chkMeal = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
+        txtReceipt = new javax.swing.JTextArea();
+        lblPrice = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblQty = new javax.swing.JLabel();
         txtQty = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jmbMainMenu = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
@@ -57,44 +60,72 @@ public class BurgersGUI extends javax.swing.JFrame {
         btgBurgers.add(rdoDouble);
         rdoDouble.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         rdoDouble.setText("Double Burger");
+        rdoDouble.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoDoubleActionPerformed(evt);
+            }
+        });
 
-        btgBurgers.add(rdoSingle1);
-        rdoSingle1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        rdoSingle1.setText("Single Burger");
+        btgBurgers.add(rdoSingle);
+        rdoSingle.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        rdoSingle.setText("Single Burger");
+        rdoSingle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoSingleActionPerformed(evt);
+            }
+        });
 
         chkBacon.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         chkBacon.setText("Add Bacon");
+        chkBacon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBaconActionPerformed(evt);
+            }
+        });
 
         chkCheese.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         chkCheese.setText("Add Cheese");
+        chkCheese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkCheeseActionPerformed(evt);
+            }
+        });
 
         chkMeal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         chkMeal.setText("Make It A Meal");
+        chkMeal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMealActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 30)); // NOI18N
         jLabel1.setText("Your Order");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtReceipt.setColumns(20);
+        txtReceipt.setRows(5);
+        jScrollPane1.setViewportView(txtReceipt);
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel3.setText("Item Price");
+        lblPrice.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblPrice.setText("Item Price");
 
         txtPrice.setEditable(false);
         txtPrice.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         txtPrice.setText("0");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel4.setText("Quantity");
+        lblQty.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblQty.setText("Quantity");
 
         txtQty.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txtQty.setText("1");
+        txtQty.setToolTipText("");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel5.setText("Order Total");
+        lblTotal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblTotal.setText("Order Total");
 
         txtTotal.setEditable(false);
         txtTotal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txtTotal.setText("1");
 
         mnuFile.setText("File");
 
@@ -132,65 +163,68 @@ public class BurgersGUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(287, 287, 287))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rdoDouble)
+                    .addComponent(chkMeal)
+                    .addComponent(chkBacon)
+                    .addComponent(chkCheese)
+                    .addComponent(rdoSingle))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblPrice)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lblQty)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(lblTotal)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdoDouble)
-                            .addComponent(chkMeal)
-                            .addComponent(chkBacon)
-                            .addComponent(chkCheese)
-                            .addComponent(rdoSingle1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(75, 75, 75))
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(rdoSingle1)
+                        .addComponent(rdoSingle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rdoDouble)
                         .addGap(48, 48, 48)
                         .addComponent(chkCheese)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkBacon)
-                        .addGap(31, 31, 31)
-                        .addComponent(chkMeal)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addComponent(chkBacon))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(chkMeal)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(55, 55, 55))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblPrice)
+                                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblQty))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTotal))))))
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -200,6 +234,31 @@ public class BurgersGUI extends javax.swing.JFrame {
         // close the application
         System.exit(0);
     }//GEN-LAST:event_mniExitActionPerformed
+
+    private void rdoSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoSingleActionPerformed
+        // Call update price method
+        updateItemPrice();
+    }//GEN-LAST:event_rdoSingleActionPerformed
+
+    private void rdoDoubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoDoubleActionPerformed
+        // Call update price method
+        updateItemPrice();
+    }//GEN-LAST:event_rdoDoubleActionPerformed
+
+    private void chkCheeseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCheeseActionPerformed
+        // Call update price method
+        updateItemPrice();
+    }//GEN-LAST:event_chkCheeseActionPerformed
+
+    private void chkBaconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBaconActionPerformed
+        // Call update price method
+        updateItemPrice();
+    }//GEN-LAST:event_chkBaconActionPerformed
+
+    private void chkMealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMealActionPerformed
+        // Call update price method
+        updateItemPrice();
+    }//GEN-LAST:event_chkMealActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,12 +301,11 @@ public class BurgersGUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkCheese;
     private javax.swing.JCheckBox chkMeal;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenuBar jmbMainMenu;
+    private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lblQty;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JMenuItem mniAddToOrder;
     private javax.swing.JMenuItem mniClear;
     private javax.swing.JMenuItem mniExit;
@@ -255,9 +313,40 @@ public class BurgersGUI extends javax.swing.JFrame {
     private javax.swing.JMenu mnuFile;
     private javax.swing.JMenu mnuOrder;
     private javax.swing.JRadioButton rdoDouble;
-    private javax.swing.JRadioButton rdoSingle1;
+    private javax.swing.JRadioButton rdoSingle;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtQty;
+    private javax.swing.JTextArea txtReceipt;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
+
+    private void updateItemPrice() {
+
+        double itemPrice = 0;
+
+        //get burger size
+        if (rdoSingle.isSelected()) {
+            itemPrice = 3.50;
+        } else if (rdoDouble.isSelected()) {
+            itemPrice = 4.75;
+        } else {
+            JOptionPane.showMessageDialog(this, "Burger type must be selected.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // add charges for options
+        if (chkCheese.isSelected()) {
+            itemPrice += 0.50;
+        }
+        if (chkBacon.isSelected()) {
+            itemPrice += 1.25;
+        }
+        if (chkMeal.isSelected()) {
+            itemPrice += 4.00;
+        }
+
+        // show item price
+        DecimalFormat fmt = new DecimalFormat("#,##0.00");
+        txtPrice.setText(fmt.format(itemPrice));
+    }
 }
