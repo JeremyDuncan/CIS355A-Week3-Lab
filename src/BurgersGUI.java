@@ -28,8 +28,43 @@ public class BurgersGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jmbMainMenu = new javax.swing.JMenuBar();
+        mnuFile = new javax.swing.JMenu();
+        mniExit = new javax.swing.JMenuItem();
+        mnuOrder = new javax.swing.JMenu();
+        mniAddToOrder = new javax.swing.JMenuItem();
+        mniClear = new javax.swing.JMenuItem();
+        mniNewOrder = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Burger Barn");
+
+        mnuFile.setText("File");
+
+        mniExit.setText("Exit");
+        mniExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniExitActionPerformed(evt);
+            }
+        });
+        mnuFile.add(mniExit);
+
+        jmbMainMenu.add(mnuFile);
+
+        mnuOrder.setText("Order");
+
+        mniAddToOrder.setText("Add to Order");
+        mnuOrder.add(mniAddToOrder);
+
+        mniClear.setText("Clear for next Item");
+        mnuOrder.add(mniClear);
+
+        mniNewOrder.setText("New Order");
+        mnuOrder.add(mniNewOrder);
+
+        jmbMainMenu.add(mnuOrder);
+
+        setJMenuBar(jmbMainMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -39,11 +74,16 @@ public class BurgersGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 529, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
+        // close the application
+        System.exit(0);
+    }//GEN-LAST:event_mniExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +121,12 @@ public class BurgersGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jmbMainMenu;
+    private javax.swing.JMenuItem mniAddToOrder;
+    private javax.swing.JMenuItem mniClear;
+    private javax.swing.JMenuItem mniExit;
+    private javax.swing.JMenuItem mniNewOrder;
+    private javax.swing.JMenu mnuFile;
+    private javax.swing.JMenu mnuOrder;
     // End of variables declaration//GEN-END:variables
 }
