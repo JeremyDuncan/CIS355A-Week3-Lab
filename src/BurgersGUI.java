@@ -155,9 +155,19 @@ public class BurgersGUI extends javax.swing.JFrame {
         mnuOrder.add(mniAddToOrder);
 
         mniClear.setText("Clear for next Item");
+        mniClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniClearActionPerformed(evt);
+            }
+        });
         mnuOrder.add(mniClear);
 
         mniNewOrder.setText("New Order");
+        mniNewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniNewOrderActionPerformed(evt);
+            }
+        });
         mnuOrder.add(mniNewOrder);
 
         jmbMainMenu.add(mnuOrder);
@@ -307,6 +317,17 @@ public class BurgersGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mniAddToOrderActionPerformed
 
+    private void mniClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniClearActionPerformed
+        clearItems();
+    }//GEN-LAST:event_mniClearActionPerformed
+
+    private void mniNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNewOrderActionPerformed
+        clearItems();
+        txtReceipt.setText("");
+        txtTotal.setText("0");
+        
+    }//GEN-LAST:event_mniNewOrderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -395,5 +416,15 @@ public class BurgersGUI extends javax.swing.JFrame {
         // show item price
         DecimalFormat fmt = new DecimalFormat("#,##0.00");
         txtPrice.setText(fmt.format(itemPrice));
+    }
+
+    private void clearItems() {
+        // clear the selections
+        btgBurgers.clearSelection();
+        chkCheese.setSelected(false);
+        chkBacon.setSelected(false);
+        chkMeal.setSelected(false);
+        txtPrice.setText("0");
+        txtQty.setText("1");
     }
 }
