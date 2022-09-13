@@ -31,6 +31,18 @@ public class BurgersGUI extends javax.swing.JFrame {
         btgBurgers = new javax.swing.ButtonGroup();
         rdoDouble = new javax.swing.JRadioButton();
         rdoSingle1 = new javax.swing.JRadioButton();
+        chkBacon = new javax.swing.JCheckBox();
+        chkCheese = new javax.swing.JCheckBox();
+        chkMeal = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        txtPrice = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtQty = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
         jmbMainMenu = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
         mniExit = new javax.swing.JMenuItem();
@@ -49,6 +61,40 @@ public class BurgersGUI extends javax.swing.JFrame {
         btgBurgers.add(rdoSingle1);
         rdoSingle1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         rdoSingle1.setText("Single Burger");
+
+        chkBacon.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        chkBacon.setText("Add Bacon");
+
+        chkCheese.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        chkCheese.setText("Add Cheese");
+
+        chkMeal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        chkMeal.setText("Make It A Meal");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 30)); // NOI18N
+        jLabel1.setText("Your Order");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel3.setText("Item Price");
+
+        txtPrice.setEditable(false);
+        txtPrice.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txtPrice.setText("0");
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel4.setText("Quantity");
+
+        txtQty.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel5.setText("Order Total");
+
+        txtTotal.setEditable(false);
+        txtTotal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
         mnuFile.setText("File");
 
@@ -81,21 +127,70 @@ public class BurgersGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdoDouble)
-                    .addComponent(rdoSingle1))
-                .addContainerGap(827, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(287, 287, 287))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rdoDouble)
+                            .addComponent(chkMeal)
+                            .addComponent(chkBacon)
+                            .addComponent(chkCheese)
+                            .addComponent(rdoSingle1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(75, 75, 75))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(rdoSingle1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rdoDouble)
-                .addContainerGap(494, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rdoSingle1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rdoDouble)
+                        .addGap(48, 48, 48)
+                        .addComponent(chkCheese)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkBacon)
+                        .addGap(31, 31, 31)
+                        .addComponent(chkMeal)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(55, 55, 55))
         );
 
         pack();
@@ -143,6 +238,15 @@ public class BurgersGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgBurgers;
+    private javax.swing.JCheckBox chkBacon;
+    private javax.swing.JCheckBox chkCheese;
+    private javax.swing.JCheckBox chkMeal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenuBar jmbMainMenu;
     private javax.swing.JMenuItem mniAddToOrder;
     private javax.swing.JMenuItem mniClear;
@@ -152,5 +256,8 @@ public class BurgersGUI extends javax.swing.JFrame {
     private javax.swing.JMenu mnuOrder;
     private javax.swing.JRadioButton rdoDouble;
     private javax.swing.JRadioButton rdoSingle1;
+    private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtQty;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
