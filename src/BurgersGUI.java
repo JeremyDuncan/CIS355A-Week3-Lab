@@ -28,6 +28,9 @@ public class BurgersGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgBurgers = new javax.swing.ButtonGroup();
+        rdoDouble = new javax.swing.JRadioButton();
+        rdoSingle1 = new javax.swing.JRadioButton();
         jmbMainMenu = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
         mniExit = new javax.swing.JMenuItem();
@@ -38,6 +41,14 @@ public class BurgersGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Burger Barn");
+
+        btgBurgers.add(rdoDouble);
+        rdoDouble.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        rdoDouble.setText("Double Burger");
+
+        btgBurgers.add(rdoSingle1);
+        rdoSingle1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        rdoSingle1.setText("Single Burger");
 
         mnuFile.setText("File");
 
@@ -70,11 +81,21 @@ public class BurgersGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rdoDouble)
+                    .addComponent(rdoSingle1))
+                .addContainerGap(827, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(rdoSingle1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rdoDouble)
+                .addContainerGap(494, Short.MAX_VALUE))
         );
 
         pack();
@@ -121,6 +142,7 @@ public class BurgersGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgBurgers;
     private javax.swing.JMenuBar jmbMainMenu;
     private javax.swing.JMenuItem mniAddToOrder;
     private javax.swing.JMenuItem mniClear;
@@ -128,5 +150,7 @@ public class BurgersGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniNewOrder;
     private javax.swing.JMenu mnuFile;
     private javax.swing.JMenu mnuOrder;
+    private javax.swing.JRadioButton rdoDouble;
+    private javax.swing.JRadioButton rdoSingle1;
     // End of variables declaration//GEN-END:variables
 }
