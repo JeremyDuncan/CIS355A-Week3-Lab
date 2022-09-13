@@ -12,6 +12,9 @@ import javax.swing.JOptionPane;
  */
 public class BurgersGUI extends javax.swing.JFrame {
 
+    // class level references and attributes
+    private double orderTotal;
+
     /**
      * Creates new form BurgersGUI
      */
@@ -20,6 +23,7 @@ public class BurgersGUI extends javax.swing.JFrame {
 
         // set to center of screen
         this.setLocationRelativeTo(null);
+        orderTotal = 0.0;
     }
 
     /**
@@ -103,6 +107,7 @@ public class BurgersGUI extends javax.swing.JFrame {
         jLabel1.setText("Your Order");
 
         txtReceipt.setColumns(20);
+        txtReceipt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtReceipt.setRows(5);
         jScrollPane1.setViewportView(txtReceipt);
 
@@ -142,6 +147,11 @@ public class BurgersGUI extends javax.swing.JFrame {
         mnuOrder.setText("Order");
 
         mniAddToOrder.setText("Add to Order");
+        mniAddToOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAddToOrderActionPerformed(evt);
+            }
+        });
         mnuOrder.add(mniAddToOrder);
 
         mniClear.setText("Clear for next Item");
@@ -259,6 +269,43 @@ public class BurgersGUI extends javax.swing.JFrame {
         // Call update price method
         updateItemPrice();
     }//GEN-LAST:event_chkMealActionPerformed
+
+    private void mniAddToOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddToOrderActionPerformed
+        // Build the output line
+        String outputLine = txtQty.getText();
+        if (rdoSingle.isSelected()) {
+            outputLine += " Single";
+        } else if (rdoDouble.isSelected()) {
+            outputLine += " Double";
+        }
+
+        if (chkCheese.isSelected()) {
+            outputLine += ", Cheese";
+        }
+        if (chkBacon.isSelected()) {
+            outputLine += ", Bacon";
+        }
+        if (chkMeal.isSelected()) {
+            outputLine += ", Meal";
+        }
+        
+        outputLine += " at ";
+        outputLine += txtPrice.getText();
+        outputLine += " Each";
+        outputLine += "\n";
+        
+        txtReceipt.append(outputLine);
+        
+        // Update the order total
+        int quantity = Integer.parseInt(txtQty.getText());
+        double itemPrice = Double.parseDouble(txtPrice.getText());
+        double linePrice = quantity * itemPrice;
+        
+        orderTotal += linePrice;
+        DecimalFormat fmt = new DecimalFormat("#,##0.00");
+        txtTotal.setText(fmt.format(orderTotal));
+
+    }//GEN-LAST:event_mniAddToOrderActionPerformed
 
     /**
      * @param args the command line arguments
