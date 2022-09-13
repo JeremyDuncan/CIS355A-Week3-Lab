@@ -1,3 +1,9 @@
+/************************************************************************** 
+Program Name: BurgerGUI.java 
+Programmer's Name: Jeremy Duncan 
+Program Description: This program calculates the total price of a user's
+*                    order for burgers based on their choices.
+**************************************************************************/
 
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
