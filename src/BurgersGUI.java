@@ -324,7 +324,7 @@ public class BurgersGUI extends javax.swing.JFrame {
     private void mniNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNewOrderActionPerformed
         clearItems();
         txtReceipt.setText("");
-        txtTotal.setText("0");
+        txtTotal.setText("0.0");
         
     }//GEN-LAST:event_mniNewOrderActionPerformed
 
