@@ -130,7 +130,7 @@ public class BurgersGUI extends javax.swing.JFrame {
 
         txtTotal.setEditable(false);
         txtTotal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        txtTotal.setText("1");
+        txtTotal.setText("0.0");
 
         mnuFile.setText("File");
 
